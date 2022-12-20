@@ -1,9 +1,8 @@
-from dataclasses import dataclass
 from datetime import datetime
+from pydantic import BaseModel
 
 
-@dataclass
-class Todo:
+class Todo(BaseModel):
     id: int
     status: bool
     content: str
