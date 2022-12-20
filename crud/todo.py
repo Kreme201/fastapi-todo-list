@@ -5,26 +5,41 @@ from models.todo import Todo
 from data import todos
 
 
-def create(content: str) -> Todo:
-    new_todo = Todo(
-        id=max([item.id for item in todos]) + 1 if len(todos) > 0 else 1,
-        status=False,
-        content=content,
-        created=datetime.now(),
-    )
+def create(content: str) -> bool:
+    try:
+        todos.append(
+            Todo(
+                id=max([item.id for item in todos]) + 1 if len(todos) > 0 else 1,
+                status=False,
+                content=content,
+                created=datetime.now(),
+            )
+        )
 
-    todos.append(new_todo)
-
-    return new_todo
-
-
-def update(id: int, status: bool) -> List[Todo]:
-    for item in todos:
-        if item.id == id:
-            item.status = status
-    return todos
+        return True
+    except:
+        return False
 
 
-def delete(id: int) -> List[Todo]:
-    todos = [item for item in todos if item.id != id]
-    return todos
+def update(id: int):
+    try:
+        for item in todos:
+            if item.id == id:
+                item.status = not item.status
+        return True
+    except:
+        return False
+
+
+def delete(id: int) -> bool:
+    try:
+        target_idx: int = [item.id for item in todos].index(id)
+
+        if target_idx > 0:
+            del todos[target_idx]
+
+            return True
+        else:
+            return False
+    except:
+        return False
