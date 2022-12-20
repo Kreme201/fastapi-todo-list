@@ -6,4 +6,4 @@ from routers import views
 app = FastAPI()
 app.mount("/assets", StaticFiles(directory="assets"), name="assets")
 
-app.include_router(views.router)
+app.include_router(views.router, include_in_schema=False)
