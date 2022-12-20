@@ -35,7 +35,7 @@ def delete(id: int) -> bool:
     try:
         target_idx: int = [item.id for item in todos].index(id)
 
-        if target_idx > 0:
+        if target_idx >= 0:
             del todos[target_idx]
 
             return True
