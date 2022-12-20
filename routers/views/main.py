@@ -18,20 +18,3 @@ async def index(request: Request):
             "todos": todos[::-1],
         },
     )
-
-
-@router.post("/")
-async def create_todo(content: str = Form("")):
-    if not content:
-        return HTMLResponse(
-            content="""
-                <script>
-                    alert("Content is Required!!");
-                    history.back();
-                </script>
-            """,
-            status_code=200,
-        )
-
-    todo.create(content)
-    return RedirectResponse("/", 303)
