@@ -1,14 +1,7 @@
 from fastapi import APIRouter, HTTPException, Form
-from pydantic import BaseModel
-from typing import Optional
 
-from data import todos
 from crud import todo
-from models.todo import Todo
-
-
-class ResponseDto(BaseModel):
-    success: bool
+from models.common import ResponseDto
 
 
 router = APIRouter()
