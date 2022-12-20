@@ -41,7 +41,9 @@
         <tbody>
             {% if todos|length > 0 %} {% for item in todos %}
             <tr>
-                <td class="text-center">{{ todos|length - loop.index + 1 }}</td>
+                <td class="text-center">
+                    {{ total - ((page - 1) * rpp) - loop.index + 1 }}
+                </td>
                 <td class="text-left">
                     <div class="form-check form-switch">
                         <input class="form-check-input todo-toglle-status"
@@ -78,54 +80,62 @@
             {% endif %}
         </tbody>
     </table>
+
+    {% if pagination.has_pagination %}
     <!-- 페이징처리 시작 -->
     <ul class="pagination justify-content-center">
+        {% if pagination.current > 1 %}
         <!-- 이전페이지 -->
         <li class="page-item">
             <a class="page-link" href="#">이전</a>
         </li>
+        {% else %}
         <li class="page-item disabled">
             <a class="page-link" tabindex="-1" aria-disabled="true" href="#"
                 >이전</a
             >
         </li>
-
+        {% endif %} {% if pagination.pages|min > 1 %}
         <li class="page-item">
-            <a class="page-link" href="#">1</a>
+            <a class="page-link" href="/?page=1">1</a>
         </li>
-
+        {% endif %} {% if pagination.pages|min > 2 %}
+        <li class="disabled">
+            <a class="page-link" href="#">...</a>
+        </li>
+        {% endif %} {% for page in pagination.pages %}
+        <li
+            class="page-item {{ 'active' if pagination.current == page else '' }}"
+        >
+            <a class="page-link" href="/?page={{ page }}">{{ page }}</a>
+        </li>
+        {% endfor %} {% if pagination.pages|max < pagination.total_pages %}
         <li class="disabled">
             <a class="page-link" href="#">...</a>
         </li>
 
         <li class="page-item">
-            <a class="page-link" href="#">4</a>
+            <a class="page-link" href="/?page={{ pagination.total_pages }}"
+                >{{ pagination.total_pages }}</a
+            >
         </li>
-        <li class="page-item active" aria-current="page">
-            <a class="page-link" href="#">5</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">6</a>
-        </li>
-
-        <li class="disabled">
-            <a class="page-link" href="#">...</a>
-        </li>
-
-        <li class="page-item">
-            <a class="page-link" href="#">9</a>
-        </li>
+        {% endif %}
 
         <!-- 다음페이지 -->
+        {% if pagination.current < pagination.total_pages %}
+        <li class="page-item">
+            <a class="page-link" href="#">다음</a>
+        </li>
+
+        {% else %}
         <li class="page-item disabled">
             <a class="page-link" tabindex="-1" aria-disabled="true" href="#"
                 >다음</a
             >
         </li>
-        <li class="page-item">
-            <a class="page-link" href="#">다음</a>
-        </li>
+        {% endif %}
     </ul>
     <!-- 페이징처리 끝 -->
+    {% endif %}
 </div>
 {% endblock %}
