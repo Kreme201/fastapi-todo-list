@@ -2,11 +2,11 @@ var todo = {
     init: function () {
         var _this = this;
 
-        $("#frm_todo").on("submit", _this.create);
-        $(".todo-toglle-status").on("change", _this.toggle);
-        $(".btn-todo-remove").on("click", _this.remove);
+        $("#frm_todo").on("submit", _this.handleCreate);
+        $(".todo-toglle-status").on("change", _this.handleToggle);
+        $(".btn-todo-remove").on("click", _this.handleRemove);
     },
-    create: function (e) {
+    handleCreate: function (e) {
         e.preventDefault();
 
         var $form = $(this);
@@ -27,7 +27,7 @@ var todo = {
 
         return false;
     },
-    toggle: function (e) {
+    handleToggle: function (e) {
         var $this = $(this);
         var todo_id = $this.data("id");
 
@@ -46,7 +46,7 @@ var todo = {
             },
         });
     },
-    remove: function (e) {
+    handleRemove: function (e) {
         e.preventDefault();
 
         var $this = $(this);
@@ -68,8 +68,6 @@ var todo = {
                 location.reload();
             },
         });
-
-        console.log("remove");
 
         return false;
     },
