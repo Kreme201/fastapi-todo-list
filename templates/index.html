@@ -42,7 +42,8 @@
             {% if todos|length > 0 %} {% for item in todos %}
             <tr>
                 <td class="text-center">
-                    {{ total - ((page - 1) * rpp) - loop.index + 1 }}
+                    {{ pagination.total - ((pagination.current - 1) *
+                    pagination.rpp) - loop.index + 1 }}
                 </td>
                 <td class="text-left">
                     <div class="form-check form-switch">

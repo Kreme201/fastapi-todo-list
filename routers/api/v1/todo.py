@@ -1,10 +1,30 @@
 from fastapi import APIRouter, HTTPException, Form
 
 from crud import todo
-from models.common import ResponseDto
-
+from models.response import ResponseDto, ResponseTodoDto
+from models.pagination import Pagination
 
 router = APIRouter()
+
+
+@router.get("/")
+async def get_todos(page: int = 1, rpp: int = 5) -> ResponseTodoDto:
+    try:
+        return ResponseTodoDto(
+            success=True,
+            data=todo.get_list(page, rpp),
+            pagination=Pagination(
+                total=todo.get_count(),
+                rpp=rpp,
+                current=page,
+            ),
+        )
+    except:
+        return ResponseTodoDto(
+            success=False,
+            data=[],
+            pagination=Pagination(),
+        )
 
 
 @router.post("/")

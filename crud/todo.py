@@ -1,7 +1,16 @@
 from datetime import datetime
+from typing import List
 
 from models.todo import Todo
 from data import todos
+
+
+def get_list(page: int = 1, rpp: int = 5) -> List[Todo]:
+    return todos[::-1][(page - 1) * rpp : page * rpp]
+
+
+def get_count() -> int:
+    return len(todos)
 
 
 def create(content: str) -> bool:
