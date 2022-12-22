@@ -3,7 +3,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 from models.pagination import Pagination
-from crud import todo
+from crud import todo, user
 
 templates = Jinja2Templates("templates")
 router = APIRouter()
@@ -12,7 +12,7 @@ router = APIRouter()
 @router.get("/", response_class=HTMLResponse)
 async def index(request: Request, page: int = 1):
     rpp: int = 5
-
+    print(user.users)
     return templates.TemplateResponse(
         "index.html",
         {

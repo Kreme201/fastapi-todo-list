@@ -1,24 +1,43 @@
-{% extends "/layout/base.html" %}
+{% extends "/layout/base.html" %} 
+
+{% block script %}
+<script src="{{ url_for('assets', path='js/user.js') }}"></script>
+{% endblock %}
 
 {% block content %}
 <div class="container">
     <h5 class="my-3 border-bottom pb-2">계정생성</h5>
-    <form method="post">
+    <form id="frm_regist" method="post">
         <div class="mb-3">
             <label for="email">이메일</label>
-            <input type="text" class="form-control" name="email" id="email" value="" />
+            <input type="text" class="form-control" name="email" id="email" />
         </div>
         <div class="mb-3">
             <label for="username">사용자 이름</label>
-            <input type="text" class="form-control" name="username" id="username" value="" />
+            <input
+                type="text"
+                class="form-control"
+                name="name"
+                id="username"
+            />
         </div>
         <div class="mb-3">
             <label for="password1">비밀번호</label>
-            <input type="password" class="form-control" name="password1" id="password1" value="" />
+            <input
+                type="password"
+                class="form-control"
+                name="password"
+                id="password1"
+            />
         </div>
         <div class="mb-3">
             <label for="password2">비밀번호 확인</label>
-            <input type="password" class="form-control" name="password2" id="password2" value="" />
+            <input
+                type="password"
+                class="form-control"
+                name="password_chk"
+                id="password2"
+            />
         </div>
         <button type="submit" class="btn btn-primary">생성하기</button>
     </form>
