@@ -1,12 +1,7 @@
-from typing import List
-
 from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
-
-from data import todos
-from models.todo import Todo
 from models.pagination import Pagination
 from crud import todo
 

@@ -2,7 +2,8 @@ from datetime import datetime
 from typing import List
 
 from models.todo import Todo
-from data import todos
+
+todos: List[Todo] = []
 
 
 def get_list(page: int = 1, rpp: int = 5) -> List[Todo]:
