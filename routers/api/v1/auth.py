@@ -2,7 +2,7 @@ from typing import Optional
 
 from fastapi import APIRouter, Response
 
-from models.dtos import ResponseDto, RequestAuthDto
+from dtos import ResponseDto, RequestAuthDto
 from crud import auth
 
 router = APIRouter()

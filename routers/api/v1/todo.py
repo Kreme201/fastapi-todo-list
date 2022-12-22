@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Form, Depends
 
 from crud import todo, auth
-from models.dtos import ResponseDto, ResponseTodoDto
+from dtos import ResponseDto, ResponseTodoDto
 from models.pagination import Pagination
 from models.user import User
 

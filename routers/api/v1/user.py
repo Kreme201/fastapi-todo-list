@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from models.dtos import ResponseDto, UserCreateDto
+from dtos import ResponseDto, UserCreateDto
 from crud import user
 
 router = APIRouter()
