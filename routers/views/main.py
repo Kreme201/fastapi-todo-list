@@ -31,9 +31,12 @@ async def index(
             "todos": todo.get_list(
                 page=page,
                 rpp=rpp,
+                user=current_user,
             ),
             "pagination": Pagination(
-                total=todo.get_count(),
+                total=todo.get_count(
+                    user=current_user,
+                ),
                 rpp=rpp,
                 current=page,
             ),

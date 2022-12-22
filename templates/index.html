@@ -62,7 +62,7 @@
                                 <label class="form-check-label" for="flexSwitchCheckDefault-1">{{ item.content }}</label>
                             </div>
                         </td>
-                        <td class="text-center">글쓴이</td>
+                        <td class="text-center">{{ item.author.name }}</td>
                         <!-- 글쓴이 추가 -->
                         <td class="text-center">
                             {{ item.created.strftime('%Y-%m-%d %H:%M:%S') }}
