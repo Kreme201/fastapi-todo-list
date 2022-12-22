@@ -6,3 +6,8 @@ router = APIRouter()
 
 router.include_router(main.router)
 router.include_router(member.router, prefix="/member")
+
+
+__all__ = [
+    router,
+]
