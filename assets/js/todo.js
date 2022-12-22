@@ -3,7 +3,7 @@ var todo = {
         var _this = this;
 
         $("#frm_todo").on("submit", _this.handleCreate);
-        $(".todo-toglle-status").on("change", _this.handleToggle);
+        $(".todo-toggle-status").on("change", _this.handleToggle);
         $(".btn-todo-remove").on("click", _this.handleRemove);
     },
     handleCreate: function (e) {
@@ -13,7 +13,7 @@ var todo = {
         var content = $("[name=content]", $form).val();
 
         if (content.length === 0) {
-            alert("내용을 입력해주세요!!");
+            alert("내용을 입력 해 주세요!!");
             return false;
         }
 
@@ -36,7 +36,7 @@ var todo = {
             method: "put",
             success: function (res) {
                 if (!res?.success) {
-                    alert("오류가 발생했습닏다!!");
+                    alert("오류가 발생했습니다!!");
                     location.reload();
                 }
             },
@@ -57,7 +57,7 @@ var todo = {
             method: "delete",
             success: function (res) {
                 if (!res?.success) {
-                    alert("오류가 발생했습닏다!!");
+                    alert("오류가 발생했습니다!!");
                     location.reload();
                 } else {
                     location.reload();
