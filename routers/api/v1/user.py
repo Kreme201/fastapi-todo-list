@@ -1,9 +1,6 @@
-from typing import Optional
+from fastapi import APIRouter
 
-from fastapi import APIRouter, Form, Depends
-
-from models.user import User, UserCreateDto
-from models.response import ResponseDto
+from models.dtos import ResponseDto, UserCreateDto
 from crud import user
 
 router = APIRouter()

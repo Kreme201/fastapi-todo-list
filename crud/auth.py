@@ -3,8 +3,9 @@ from uuid import uuid4
 
 from fastapi import Cookie
 
-from models.auth import Auth, RequestAuthDto
+from models.auth import Auth
 from models.user import User
+from models.dtos import RequestAuthDto
 
 from crud import user
 

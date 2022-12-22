@@ -1,6 +1,7 @@
 from typing import List, Optional
 
-from models.user import User, UserCreateDto
+from models.user import User
+from models.dtos import UserCreateDto
 
 users: List[User] = []
 

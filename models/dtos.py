@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 from typing import List, Optional
 
 
@@ -14,3 +14,14 @@ class ResponseDto(BaseModel):
 class ResponseTodoDto(ResponseDto):
     data: List[Todo]
     pagination: Pagination
+
+
+class RequestAuthDto(BaseModel):
+    email: EmailStr
+    password: str
+
+
+class UserCreateDto(BaseModel):
+    name: str
+    email: EmailStr
+    password: str

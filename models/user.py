@@ -6,9 +6,3 @@ class User(BaseModel):
     name: str
     email: EmailStr
     password: str
-
-
-class UserCreateDto(BaseModel):
-    name: str
-    email: EmailStr
-    password: str
